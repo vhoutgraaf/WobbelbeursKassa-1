@@ -1,0 +1,84 @@
+
+Zie:
+http://www.sqlite.org/sqlite.html
+
+d:
+cd D:\projecten\wobbel\beurs_lazarus\database
+d:\programs\sqlite\sqlite3.exe wobbelbeurs.sp3
+.mode column
+.headers on
+
+
+
+d:
+cd D:\projecten\wobbel\beurs_lazarus\database
+d:\programs\sqlite\sqlite3.exe wobbelbeurs_testimport.sp3
+.mode column
+.headers on
+
+
+betere uitvoer:
+
+.mode column
+.headers on
+
+
+
+database dump in sql:
+.dump
+dan de uitvoer copy&paste naar een bestand "createdb-20121110.sql"
+
+quit sql
+
+verwijder database bestand
+
+maak nieuwe database aan met 
+D:\programs\sqlite\sqlite3.exe D:\projecten\wobbel\beurs_lazarus\database\wobbelbeurs.sp3
+
+sql in een bestand uitvoeren:
+.read D:/projecten/wobbel/beurs_lazarus/database/createdb-20130105.sql
+
+
+
+.mode column
+.headers on
+
+
+
+d:
+cd D:\projecten\wobbel\beurs_lazarus\database
+del wobbelbeurs_minimaal.sp3
+d:\programs\sqlite\sqlite3.exe wobbelbeurs_minimaal.sp3
+.mode column
+.headers on
+.read D:/projecten/wobbel/beurs_lazarus/database/createdb-minimaal.sql
+
+
+
+d:
+cd D:\projecten\wobbel\beurs_lazarus\database
+del wobbelbeurs.sp3
+d:\programs\sqlite\sqlite3.exe wobbelbeurs.sp3
+.mode column
+.headers on
+.read D:/projecten/wobbel/beurs_lazarus/database/createdb-minimaal.sql
+
+
+d:\programs\sqlite\sqlite3.exe wobbelbeurs_minimaal.sp3
+.mode column
+.headers on
+.read D:/projecten/wobbel/beurs_lazarus/database/createdb-minimaal.sql
+
+
+
+
+.mode column
+.headers on
+.read D:/projecten/wobbel/beurs_lazarus/database/createdb-minimaal.sql
+.read D:/projecten/wobbel/beurs_lazarus/database/createdb-testvulling.sql
+.read D:/projecten/wobbel/beurs_lazarus/database/createdb-extravulling.sql
+
+
+
+
+

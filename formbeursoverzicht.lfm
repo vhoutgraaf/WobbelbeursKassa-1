@@ -1,0 +1,24 @@
+object frmBeursoverzicht: TfrmBeursoverzicht
+  Left = 432
+  Height = 400
+  Top = 330
+  Width = 1239
+  Caption = 'Wobbelbeurs Kassa - Beurs'
+  ClientHeight = 400
+  ClientWidth = 1239
+  FormStyle = fsStayOnTop
+  OnActivate = FormActivate
+  OnCloseQuery = FormCloseQuery
+  OnCreate = FormCreate
+  OnDeactivate = FormDeactivate
+  OnDestroy = FormDestroy
+  LCLVersion = '1.0.2.0'
+  object pnlBeurs: TPanel
+    Left = 0
+    Height = 400
+    Top = 0
+    Width = 1239
+    Align = alClient
+    TabOrder = 0
+  end
+end

@@ -1,0 +1,945 @@
+<?xml version="1.0"?>
+<CONFIG>
+  <ProjectOptions>
+    <Version Value="9"/>
+    <PathDelim Value="\"/>
+    <General>
+      <MainUnit Value="0"/>
+      <Title Value="Wobbelbeurs Kassa"/>
+      <ResourceType Value="res"/>
+      <UseXPManifest Value="True"/>
+      <XPManifest>
+        <DpiAware Value="True"/>
+      </XPManifest>
+      <Icon Value="0"/>
+      <ActiveWindowIndexAtStart Value="0"/>
+    </General>
+    <i18n>
+      <EnableI18N LFM="False"/>
+    </i18n>
+    <VersionInfo>
+      <UseVersionInfo Value="True"/>
+      <AutoIncrementBuild Value="True"/>
+      <MajorVersionNr Value="1"/>
+      <MinorVersionNr Value="11"/>
+      <RevisionNr Value="1"/>
+      <Language Value="0413"/>
+      <StringTable Comments="ingebruikname bij Kledingbeurs maart 2014" FileDescription="Wobbelbeurs Kassaprogramma" InternalName="wobbelbeurs" LegalCopyright="V. Houtgraaf, Bunnik" OriginalFilename="wobbelbeurs" ProductVersion="1"/>
+    </VersionInfo>
+    <BuildModes Count="1" Active="Default">
+      <Item1 Name="Default" Default="True"/>
+    </BuildModes>
+    <PublishOptions>
+      <Version Value="2"/>
+      <IncludeFileFilter Value="*.(pas|pp|inc|lfm|lpr|lrs|lpi|lpk|sh|xml)"/>
+      <ExcludeFileFilter Value="*.(bak|ppu|o|so);*~;backup"/>
+    </PublishOptions>
+    <RunParams>
+      <local>
+        <FormatVersion Value="1"/>
+      </local>
+    </RunParams>
+    <RequiredPackages Count="8">
+      <Item1>
+        <PackageName Value="TAChartLazarusPkg"/>
+      </Item1>
+      <Item2>
+        <PackageName Value="laz_fpspreadsheet"/>
+      </Item2>
+      <Item3>
+        <PackageName Value="LazControls"/>
+      </Item3>
+      <Item4>
+        <PackageName Value="SynEdit"/>
+      </Item4>
+      <Item5>
+        <PackageName Value="FCL"/>
+        <MinVersion Major="1" Valid="True"/>
+      </Item5>
+      <Item6>
+        <PackageName Value="SQLDBLaz"/>
+        <MinVersion Major="1" Release="1" Valid="True"/>
+      </Item6>
+      <Item7>
+        <PackageName Value="zcomponent"/>
+        <MinVersion Major="6" Minor="6" Release="6" Valid="True"/>
+      </Item7>
+      <Item8>
+        <PackageName Value="LCL"/>
+      </Item8>
+    </RequiredPackages>
+    <Units Count="57">
+      <Unit0>
+        <Filename Value="wobbelbeurs.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="wobbelbeurs"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="64"/>
+        <CursorPos X="73" Y="92"/>
+        <UsageCount Value="200"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="formmain.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmMain"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="formmain"/>
+        <EditorIndex Value="1"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="115"/>
+        <CursorPos X="24" Y="125"/>
+        <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="c_appsettings.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="c_appsettings"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="139"/>
+        <CursorPos X="1" Y="151"/>
+        <UsageCount Value="200"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="m_constant.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="m_constant"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="62"/>
+        <CursorPos X="9" Y="75"/>
+        <UsageCount Value="200"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="m_error.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="m_error"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="57"/>
+        <CursorPos X="49" Y="80"/>
+        <UsageCount Value="201"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="m_querystuff.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="m_querystuff"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="23"/>
+        <CursorPos X="1" Y="42"/>
+        <UsageCount Value="200"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="m_wobbeldata.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="dmWobbel"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+        <UnitName Value="m_wobbeldata"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="737"/>
+        <CursorPos X="52" Y="760"/>
+        <UsageCount Value="202"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="formsplash.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmSplash"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="formsplash"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="3" Y="34"/>
+        <UsageCount Value="200"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="c_beurs.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="c_beurs"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="33"/>
+        <CursorPos X="16" Y="53"/>
+        <UsageCount Value="200"/>
+      </Unit8>
+      <Unit9>
+        <Filename Value="m_tools.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="m_tools"/>
+        <EditorIndex Value="0"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1439"/>
+        <CursorPos X="1" Y="1455"/>
+        <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+      </Unit9>
+      <Unit10>
+        <Filename Value="c_vrijwilliger.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="c_vrijwilliger"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="86"/>
+        <CursorPos X="45" Y="119"/>
+        <UsageCount Value="200"/>
+      </Unit10>
+      <Unit11>
+        <Filename Value="c_verkoper.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="c_verkoper"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="101"/>
+        <CursorPos X="1" Y="119"/>
+        <UsageCount Value="200"/>
+      </Unit11>
+      <Unit12>
+        <Filename Value="c_wobbelgridpanel.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="c_wobbelgridpanel"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="205"/>
+        <CursorPos X="1" Y="234"/>
+        <UsageCount Value="13287"/>
+      </Unit12>
+      <Unit13>
+        <Filename Value="c_gridverkoper.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="c_gridverkoper"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="34"/>
+        <CursorPos X="1" Y="63"/>
+        <UsageCount Value="13279"/>
+      </Unit13>
+      <Unit14>
+        <Filename Value="c_gridvrijwilliger.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="c_gridvrijwilliger"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="76"/>
+        <CursorPos X="16" Y="96"/>
+        <UsageCount Value="13225"/>
+      </Unit14>
+      <Unit15>
+        <Filename Value="m_wobbelglobals.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="m_wobbelglobals"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="1" Y="6"/>
+        <UsageCount Value="13217"/>
+      </Unit15>
+      <Unit16>
+        <Filename Value="formhelp.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmHelp"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="formhelp"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="41"/>
+        <CursorPos X="1" Y="75"/>
+        <UsageCount Value="13200"/>
+      </Unit16>
+      <Unit17>
+        <Filename Value="c_kassa.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="c_kassa"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="145"/>
+        <CursorPos X="1" Y="161"/>
+        <UsageCount Value="13200"/>
+      </Unit17>
+      <Unit18>
+        <Filename Value="c_gridbeurskassa.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="c_gridbeurskassa"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="230"/>
+        <CursorPos X="35" Y="238"/>
+        <UsageCount Value="13181"/>
+      </Unit18>
+      <Unit19>
+        <Filename Value="c_gridbeurs.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="c_gridbeurs"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="456"/>
+        <CursorPos X="11" Y="469"/>
+        <UsageCount Value="13159"/>
+      </Unit19>
+      <Unit20>
+        <Filename Value="formdialoog.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmDialoog"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="formdialoog"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="35"/>
+        <CursorPos X="14" Y="47"/>
+        <UsageCount Value="13154"/>
+      </Unit20>
+      <Unit21>
+        <Filename Value="c_gridtransactie.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="c_gridtransactie"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="81"/>
+        <CursorPos X="1" Y="83"/>
+        <UsageCount Value="13150"/>
+      </Unit21>
+      <Unit22>
+        <Filename Value="c_gridtransactieartikel.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="c_gridtransactieartikel"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="862"/>
+        <CursorPos X="32" Y="868"/>
+        <UsageCount Value="13150"/>
+      </Unit22>
+      <Unit23>
+        <Filename Value="forminstellingen.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmInstellingen"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="forminstellingen"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="158"/>
+        <CursorPos X="20" Y="74"/>
+        <UsageCount Value="200"/>
+      </Unit23>
+      <Unit24>
+        <Filename Value="formbeursoverzicht.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmBeursoverzicht"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="formbeursoverzicht"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="74"/>
+        <CursorPos X="87" Y="123"/>
+        <UsageCount Value="730"/>
+      </Unit24>
+      <Unit25>
+        <Filename Value="formbeurskassaoverzicht.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmBeursKassaoverzicht"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="formbeurskassaoverzicht"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="71"/>
+        <CursorPos X="1" Y="52"/>
+        <UsageCount Value="721"/>
+      </Unit25>
+      <Unit26>
+        <Filename Value="formaccounts.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmAccounts"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="formaccounts"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="74"/>
+        <CursorPos X="1" Y="93"/>
+        <UsageCount Value="719"/>
+      </Unit26>
+      <Unit27>
+        <Filename Value="formbetaalwijze.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmBetaalwijze"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="formbetaalwijze"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="22"/>
+        <CursorPos X="21" Y="26"/>
+        <UsageCount Value="715"/>
+      </Unit27>
+      <Unit28>
+        <Filename Value="formartikeltype.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmArtikeltype"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="formartikeltype"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="76"/>
+        <CursorPos X="16" Y="86"/>
+        <UsageCount Value="713"/>
+      </Unit28>
+      <Unit29>
+        <Filename Value="forminloggen.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmInloggen"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="forminloggen"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="172"/>
+        <CursorPos X="11" Y="186"/>
+        <UsageCount Value="712"/>
+      </Unit29>
+      <Unit30>
+        <Filename Value="formverkopersbeheren.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmVerkopersbeheren"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="formverkopersbeheren"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="737"/>
+        <CursorPos X="1" Y="760"/>
+        <UsageCount Value="705"/>
+      </Unit30>
+      <Unit31>
+        <Filename Value="formverkoperskoppelen.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmVerkoperskoppelen"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="formverkoperskoppelen"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="68"/>
+        <CursorPos X="34" Y="78"/>
+        <UsageCount Value="704"/>
+      </Unit31>
+      <Unit32>
+        <Filename Value="formtransacties.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmTransacties"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="formtransacties"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="3"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="581"/>
+        <CursorPos X="28" Y="595"/>
+        <UsageCount Value="252"/>
+        <Loaded Value="True"/>
+      </Unit32>
+      <Unit33>
+        <Filename Value="formdatabase.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmDatabase"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="formdatabase"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="54"/>
+        <CursorPos X="41" Y="61"/>
+        <UsageCount Value="307"/>
+      </Unit33>
+      <Unit34>
+        <Filename Value="c_wobbelbuttonpanel.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="c_wobbelbuttonpanel"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="13"/>
+        <CursorPos X="25" Y="31"/>
+        <UsageCount Value="201"/>
+      </Unit34>
+      <Unit35>
+        <Filename Value="formkassaopensluit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmKassaOpenSluit"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="formkassaopensluit"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="281"/>
+        <CursorPos X="15" Y="299"/>
+        <UsageCount Value="200"/>
+      </Unit35>
+      <Unit36>
+        <Filename Value="formimportkassa.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmImportKassa"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="formimportkassa"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="2412"/>
+        <CursorPos X="11" Y="2437"/>
+        <UsageCount Value="202"/>
+      </Unit36>
+      <Unit37>
+        <Filename Value="formoverzichtkassas.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmOverzichtKassas"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="formoverzichtkassas"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="282"/>
+        <CursorPos X="21" Y="294"/>
+        <UsageCount Value="214"/>
+      </Unit37>
+      <Unit38>
+        <Filename Value="formoverzichtverkopers.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmOverzichtVerkopers"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="formoverzichtverkopers"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="240"/>
+        <CursorPos X="165" Y="261"/>
+        <UsageCount Value="214"/>
+      </Unit38>
+      <Unit39>
+        <Filename Value="forminstellingenbeheer.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmInstellingenBeheer"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="forminstellingenbeheer"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="101"/>
+        <CursorPos X="3" Y="131"/>
+        <UsageCount Value="212"/>
+      </Unit39>
+      <Unit40>
+        <Filename Value="formoverzichtverkoperperkassa.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmOverzichtVerkoperPerKassa"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="formoverzichtverkoperperkassa"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="214"/>
+        <CursorPos X="162" Y="236"/>
+        <UsageCount Value="338"/>
+      </Unit40>
+      <Unit41>
+        <Filename Value="formoverzichtbeurs.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmOverzichtBeurs"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="formoverzichtbeurs"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="214"/>
+        <CursorPos X="76" Y="236"/>
+        <UsageCount Value="292"/>
+      </Unit41>
+      <Unit42>
+        <Filename Value="formoverzichttransactiesperverkop.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmOverzichtTransactiesPerVerkoper"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="formoverzichttransactiesperverkop"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="225"/>
+        <CursorPos X="167" Y="243"/>
+        <UsageCount Value="292"/>
+      </Unit42>
+      <Unit43>
+        <Filename Value="formoverzichttotaalexport.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmOverzichtTotaalExport"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="formoverzichttotaalexport"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="211"/>
+        <CursorPos X="26" Y="237"/>
+        <UsageCount Value="292"/>
+      </Unit43>
+      <Unit44>
+        <Filename Value="vinfo.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="vinfo"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="102" Y="3"/>
+        <UsageCount Value="210"/>
+      </Unit44>
+      <Unit45>
+        <Filename Value="formabout.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmAbout"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="formabout"/>
+        <EditorIndex Value="2"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="83"/>
+        <CursorPos X="127" Y="98"/>
+        <UsageCount Value="257"/>
+        <Loaded Value="True"/>
+      </Unit45>
+      <Unit46>
+        <Filename Value="formgrafiek_transactietijd.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmTransactiesTegenTijd"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="formgrafiek_transactietijd"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="32"/>
+        <CursorPos X="14" Y="55"/>
+        <UsageCount Value="248"/>
+      </Unit46>
+      <Unit47>
+        <Filename Value="framewachten.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frameWachten"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
+        <UnitName Value="framewachten"/>
+        <EditorIndex Value="4"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="2"/>
+        <CursorPos X="11" Y="27"/>
+        <UsageCount Value="8847"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit47>
+      <Unit48>
+        <Filename Value="D:\lazarus\externetools\fpspreadsheet\fpspreadsheet.pas"/>
+        <UnitName Value="fpspreadsheet"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="726"/>
+        <CursorPos X="1" Y="743"/>
+        <UsageCount Value="6"/>
+      </Unit48>
+      <Unit49>
+        <Filename Value="framebetaalwijze.pas"/>
+        <ComponentName Value="Frame1"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="framebetaalwijze"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="1" Y="23"/>
+        <UsageCount Value="10"/>
+      </Unit49>
+      <Unit50>
+        <Filename Value="D:\lazarus\lcl\include\control.inc"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="3968"/>
+        <CursorPos X="1" Y="3984"/>
+        <UsageCount Value="1"/>
+      </Unit50>
+      <Unit51>
+        <Filename Value="formbetaalwijzeinvullen.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmBetaalwijzeInvullen"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="formbetaalwijzeinvullen"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="69"/>
+        <CursorPos X="44" Y="89"/>
+        <UsageCount Value="122"/>
+      </Unit51>
+      <Unit52>
+        <Filename Value="D:\lazarus\lcl\include\radiogroup.inc"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="340"/>
+        <CursorPos X="1" Y="357"/>
+        <UsageCount Value="0"/>
+      </Unit52>
+      <Unit53>
+        <Filename Value="D:\lazarus\fpc\2.6.0\source\packages\fcl-base\src\contnrs.pp"/>
+        <UnitName Value="contnrs"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="66"/>
+        <CursorPos X="14" Y="82"/>
+        <UsageCount Value="1"/>
+      </Unit53>
+      <Unit54>
+        <Filename Value="D:\lazarus\externetools\zeoslib\src\component\ZAbstractConnection.pas"/>
+        <UnitName Value="ZAbstractConnection"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="372"/>
+        <CursorPos X="1" Y="389"/>
+        <UsageCount Value="1"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit54>
+      <Unit55>
+        <Filename Value="D:\lazarus\externetools\zeoslib\src\core\ZURL.pas"/>
+        <UnitName Value="ZURL"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="199"/>
+        <CursorPos X="1" Y="216"/>
+        <UsageCount Value="1"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit55>
+      <Unit56>
+        <Filename Value="D:\lazarus\fpc\2.6.0\source\packages\fcl-db\src\base\db.pas"/>
+        <UnitName Value="db"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="93"/>
+        <CursorPos X="1" Y="117"/>
+        <UsageCount Value="11"/>
+      </Unit56>
+    </Units>
+    <JumpHistory Count="30" HistoryIndex="29">
+      <Position1>
+        <Filename Value="m_tools.pas"/>
+        <Caret Line="1448" Column="1" TopLine="1438"/>
+      </Position1>
+      <Position2>
+        <Filename Value="m_tools.pas"/>
+        <Caret Line="1456" Column="1" TopLine="1438"/>
+      </Position2>
+      <Position3>
+        <Filename Value="m_tools.pas"/>
+        <Caret Line="1448" Column="1" TopLine="1438"/>
+      </Position3>
+      <Position4>
+        <Filename Value="m_tools.pas"/>
+        <Caret Line="1450" Column="1" TopLine="1438"/>
+      </Position4>
+      <Position5>
+        <Filename Value="m_tools.pas"/>
+        <Caret Line="1338" Column="16" TopLine="1325"/>
+      </Position5>
+      <Position6>
+        <Filename Value="formtransacties.pas"/>
+        <Caret Line="609" Column="11" TopLine="587"/>
+      </Position6>
+      <Position7>
+        <Filename Value="formtransacties.pas"/>
+        <Caret Line="83" Column="30" TopLine="67"/>
+      </Position7>
+      <Position8>
+        <Filename Value="formtransacties.pas"/>
+        <Caret Line="609" Column="20" TopLine="581"/>
+      </Position8>
+      <Position9>
+        <Filename Value="formtransacties.pas"/>
+        <Caret Line="866" Column="11" TopLine="857"/>
+      </Position9>
+      <Position10>
+        <Filename Value="formtransacties.pas"/>
+        <Caret Line="27" Column="5" TopLine="10"/>
+      </Position10>
+      <Position11>
+        <Filename Value="formtransacties.pas"/>
+        <Caret Line="83" Column="30" TopLine="56"/>
+      </Position11>
+      <Position12>
+        <Filename Value="formtransacties.pas"/>
+        <Caret Line="609" Column="1" TopLine="581"/>
+      </Position12>
+      <Position13>
+        <Filename Value="formtransacties.pas"/>
+        <Caret Line="863" Column="1" TopLine="846"/>
+      </Position13>
+      <Position14>
+        <Filename Value="formtransacties.pas"/>
+        <Caret Line="864" Column="1" TopLine="846"/>
+      </Position14>
+      <Position15>
+        <Filename Value="formtransacties.pas"/>
+        <Caret Line="866" Column="1" TopLine="846"/>
+      </Position15>
+      <Position16>
+        <Filename Value="formtransacties.pas"/>
+        <Caret Line="867" Column="1" TopLine="846"/>
+      </Position16>
+      <Position17>
+        <Filename Value="formtransacties.pas"/>
+        <Caret Line="868" Column="1" TopLine="846"/>
+      </Position17>
+      <Position18>
+        <Filename Value="formtransacties.pas"/>
+        <Caret Line="869" Column="1" TopLine="846"/>
+      </Position18>
+      <Position19>
+        <Filename Value="formtransacties.pas"/>
+        <Caret Line="871" Column="1" TopLine="846"/>
+      </Position19>
+      <Position20>
+        <Filename Value="formtransacties.pas"/>
+        <Caret Line="872" Column="1" TopLine="846"/>
+      </Position20>
+      <Position21>
+        <Filename Value="formtransacties.pas"/>
+        <Caret Line="874" Column="1" TopLine="846"/>
+      </Position21>
+      <Position22>
+        <Filename Value="formtransacties.pas"/>
+        <Caret Line="876" Column="1" TopLine="848"/>
+      </Position22>
+      <Position23>
+        <Filename Value="formtransacties.pas"/>
+        <Caret Line="877" Column="1" TopLine="849"/>
+      </Position23>
+      <Position24>
+        <Filename Value="formtransacties.pas"/>
+        <Caret Line="878" Column="1" TopLine="850"/>
+      </Position24>
+      <Position25>
+        <Filename Value="formtransacties.pas"/>
+        <Caret Line="884" Column="1" TopLine="868"/>
+      </Position25>
+      <Position26>
+        <Filename Value="formtransacties.pas"/>
+        <Caret Line="892" Column="1" TopLine="868"/>
+      </Position26>
+      <Position27>
+        <Filename Value="formtransacties.pas"/>
+        <Caret Line="894" Column="1" TopLine="868"/>
+      </Position27>
+      <Position28>
+        <Filename Value="formtransacties.pas"/>
+        <Caret Line="892" Column="1" TopLine="868"/>
+      </Position28>
+      <Position29>
+        <Filename Value="formtransacties.pas"/>
+        <Caret Line="1" Column="1" TopLine="1"/>
+      </Position29>
+      <Position30>
+        <Filename Value="formtransacties.pas"/>
+        <Caret Line="83" Column="30" TopLine="56"/>
+      </Position30>
+    </JumpHistory>
+  </ProjectOptions>
+  <CompilerOptions>
+    <Version Value="11"/>
+    <PathDelim Value="\"/>
+    <Target>
+      <Filename Value="wobbelbeurs"/>
+    </Target>
+    <SearchPaths>
+      <IncludeFiles Value="$(ProjOutDir)"/>
+      <OtherUnitFiles Value="img"/>
+      <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
+    </SearchPaths>
+    <CodeGeneration>
+      <Optimizations>
+        <OptimizationLevel Value="2"/>
+      </Optimizations>
+    </CodeGeneration>
+    <Linking>
+      <Debugging>
+        <GenerateDebugInfo Value="False"/>
+        <UseHeaptrc Value="True"/>
+      </Debugging>
+      <Options>
+        <Win32>
+          <GraphicApplication Value="True"/>
+        </Win32>
+      </Options>
+    </Linking>
+    <Other>
+      <CompilerMessages>
+        <UseMsgFile Value="True"/>
+      </CompilerMessages>
+      <CompilerPath Value="$(CompPath)"/>
+    </Other>
+  </CompilerOptions>
+  <Debugging>
+    <BreakPoints Count="10">
+      <Item1>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="c_gridbeurs.pas"/>
+        <Line Value="417"/>
+      </Item1>
+      <Item2>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="c_gridbeurs.pas"/>
+        <Line Value="734"/>
+      </Item2>
+      <Item3>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="c_gridbeurskassa.pas"/>
+        <Line Value="430"/>
+      </Item3>
+      <Item4>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="c_gridbeurskassa.pas"/>
+        <Line Value="753"/>
+      </Item4>
+      <Item5>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="c_gridvrijwilliger.pas"/>
+        <Line Value="511"/>
+      </Item5>
+      <Item6>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="c_gridvrijwilliger.pas"/>
+        <Line Value="751"/>
+      </Item6>
+      <Item7>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="c_gridverkoper.pas"/>
+        <Line Value="810"/>
+      </Item7>
+      <Item8>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="c_gridverkoper.pas"/>
+        <Line Value="1185"/>
+      </Item8>
+      <Item9>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="c_verkoper.pas"/>
+        <Line Value="215"/>
+      </Item9>
+      <Item10>
+        <Kind Value="bpkAddress"/>
+        <Address Value="8067889"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+      </Item10>
+    </BreakPoints>
+    <Watches Count="3">
+      <Item1>
+        <Expression Value="q"/>
+      </Item1>
+      <Item2>
+        <Expression Value="rb"/>
+      </Item2>
+      <Item3>
+        <Expression Value="q.FFIELDLIST[2]"/>
+      </Item3>
+    </Watches>
+    <Exceptions Count="7">
+      <Item1>
+        <Name Value="EAbort"/>
+      </Item1>
+      <Item2>
+        <Name Value="ECodetoolError"/>
+      </Item2>
+      <Item3>
+        <Name Value="EFOpenError"/>
+      </Item3>
+      <Item4>
+        <Name Value="EConvertError"/>
+      </Item4>
+      <Item5>
+        <Name Value="EZSQLException"/>
+      </Item5>
+      <Item6>
+        <Name Value="EWobbelError"/>
+      </Item6>
+      <Item7>
+        <Name Value="EZDatabaseError"/>
+      </Item7>
+    </Exceptions>
+  </Debugging>
+</CONFIG>

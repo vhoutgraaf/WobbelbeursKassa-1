@@ -1,0 +1,37 @@
+object frmInfo: TfrmInfo
+  Left = 737
+  Height = 358
+  Top = 365
+  Width = 492
+  Caption = 'Wobbelbeurs Kassa - Info'
+  ClientHeight = 358
+  ClientWidth = 492
+  FormStyle = fsStayOnTop
+  OnActivate = FormActivate
+  ShowInTaskBar = stNever
+  LCLVersion = '1.0.2.0'
+  object pnlInfo: TPanel
+    Left = 0
+    Height = 358
+    Top = 0
+    Width = 492
+    Align = alClient
+    ClientHeight = 358
+    ClientWidth = 492
+    Color = clInfoBk
+    ParentColor = False
+    TabOrder = 0
+    object mmoInfo: TMemo
+      Left = 19
+      Height = 327
+      Top = 14
+      Width = 458
+      Anchors = [akTop, akLeft, akRight, akBottom]
+      Font.Color = clInfoBk
+      ParentFont = False
+      ReadOnly = True
+      ScrollBars = ssAutoBoth
+      TabOrder = 0
+    end
+  end
+end

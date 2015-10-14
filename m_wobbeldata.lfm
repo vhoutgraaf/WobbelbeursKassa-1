@@ -1,0 +1,230 @@
+object dmWobbel: TdmWobbel
+  OnCreate = DataModuleCreate
+  OldCreateOrder = False
+  Height = 522
+  HorizontalOffset = 689
+  VerticalOffset = 293
+  Width = 1031
+  object connWobbelMdb: TZConnection
+    UTF8StringsAsWideField = False
+    PreprepareSQL = False
+    Properties.Strings = (
+      'PreprepareSQL='
+    )
+    AutoCommit = False
+    DesignConnection = True
+    Port = 0
+    Protocol = 'sqlite-3'
+    LibraryLocation = 'lib\sqlite3.dll'
+    left = 32
+    top = 296
+  end
+  object dsBetaalwijze: TDatasource
+    DataSet = tblBetaalwijze
+    left = 104
+    top = 64
+  end
+  object dsArtikeltype: TDatasource
+    DataSet = tblArtikeltype
+    left = 184
+    top = 64
+  end
+  object tblBetaalwijze: TZQuery
+    Connection = connWobbelMdb
+    SQL.Strings = (
+      'select * from betaalwijze;'
+    )
+    Params = <>
+    left = 104
+    top = 16
+  end
+  object tblArtikeltype: TZQuery
+    Connection = connWobbelMdb
+    SQL.Strings = (
+      'select * from artikeltype;'
+    )
+    Params = <>
+    left = 184
+    top = 16
+  end
+  object dlgDatabase: TOpenDialog
+    Title = 'Open database bestand'
+    DefaultExt = '.sp3'
+    InitialDir = './'
+    left = 264
+    top = 304
+  end
+  object mnMain: TMainMenu
+    left = 144
+    top = 352
+    object mnuInloggen: TMenuItem
+      Caption = '&Opstarten'
+      object mnuDatabase: TMenuItem
+        Caption = 'Database'
+        OnClick = mnuDatabaseClick
+      end
+      object mnuItemInloggen: TMenuItem
+        Caption = 'Inloggen'
+        OnClick = mnuInloggenClick
+      end
+      object mnuItemBeurs: TMenuItem
+        Caption = 'Beurs'
+        OnClick = mnuBeursClick
+      end
+      object mnuVerkopersBeheren: TMenuItem
+        Caption = 'Inbrengers'
+        OnClick = mnuVerkopersBeherenClick
+      end
+      object mnuItemKassa: TMenuItem
+        Caption = 'Kassas'
+        OnClick = mnuBeursKassaClick
+      end
+      object mnuLoginAccounts: TMenuItem
+        Caption = 'Gebruikers (Accounts)'
+        OnClick = mnuLoginAccountsClick
+      end
+      object mnuKassaBedrag: TMenuItem
+        Caption = 'Kassa Open / Sluit'
+        OnClick = mnuKassaBedragClick
+      end
+      object mnuItemTransacties: TMenuItem
+        Caption = 'Transacties'
+        OnClick = mnuItemTransactiesClick
+      end
+    end
+    object mnuInstellingen: TMenuItem
+      Caption = 'O&pties'
+      object mnuAlgemeen: TMenuItem
+        Caption = '&Algemene Instellingen'
+        OnClick = mnuInstellingenClick
+      end
+    end
+    object mnuBeheer: TMenuItem
+      Caption = '&Beheer'
+      object mnuArtikeltypes: TMenuItem
+        Caption = 'A&rtikeltypes'
+        OnClick = mnuArtikeltypesClick
+      end
+      object mnuBetaalwijzes: TMenuItem
+        Caption = '&Betaalwijzes'
+        OnClick = mnuBetaalwijzesClick
+      end
+      object mnuInstellingenBeheer: TMenuItem
+        Caption = 'Instellingen'
+        OnClick = mnuInstellingenBeheerClick
+      end
+    end
+    object mnuImportExport: TMenuItem
+      Caption = '&Import / Export'
+      object mnuImporteerKassa: TMenuItem
+        Caption = 'Importeer kassa'
+        OnClick = mnuImporteerKassaClick
+      end
+      object mnuOverzichtKassas: TMenuItem
+        Caption = 'Overzicht per Kassa'
+        OnClick = mnuOverzichtKassasClick
+      end
+      object mnuOverzichtBeurs: TMenuItem
+        Caption = 'Overzicht Beurs'
+        OnClick = mnuOverzichtBeursClick
+      end
+      object mnuOverzichtVerkoper: TMenuItem
+        Caption = 'Opbrengst per inbrenger'
+        OnClick = mnuOverzichtVerkoperClick
+      end
+      object mnuOverzichtVerkoperPerKassa: TMenuItem
+        Caption = 'Opbrengst per inbrenger per kassa'
+        Enabled = False
+        Visible = False
+        OnClick = mnuOverzichtVerkoperPerKassaClick
+      end
+      object mnuOverzichtTransactiesPerInbrenger: TMenuItem
+        Caption = 'Transacties per Inbrenger'
+        OnClick = mnuOverzichtTransactiesPerInbrengerClick
+      end
+      object mnuOverzichtTotaalExport: TMenuItem
+        Caption = 'Totaal export'
+        OnClick = mnuOverzichtTotaalExportClick
+      end
+      object mnuGrafiekTransactieTijd: TMenuItem
+        Caption = 'Grafiek Transactie - Tijd'
+        Visible = False
+        OnClick = mnuGrafiekTransactieTijdClick
+      end
+    end
+    object mnuHelp: TMenuItem
+      Caption = '&Help'
+      object mnuOpenHelp: TMenuItem
+        Caption = 'Help'
+        OnClick = mnuOpenHelpClick
+      end
+      object mnuAbout: TMenuItem
+        Caption = 'Over'
+        OnClick = mnuAboutClick
+      end
+    end
+  end
+  object dlgSelectDatabaseExtraBackupDirectory: TSelectDirectoryDialog
+    left = 344
+    top = 360
+  end
+  object vwKassabedrag: TZQuery
+    Connection = connWobbelMdb
+    SQL.Strings = (
+      'select '
+      'k.kassanr, k.opmerkingen as kassaopmerkingen'
+      ', datetime(kos.datumtijd, ''localtime'') as datumtijd'
+      ', case when kos.kassastatusid is null then (select status from kassastatus where kassastatus_id=0) else ks.status end as status'
+      ', case when kb.totaalbedrag is null then -1 else kb.totaalbedrag end as bedrag, kb.opmerkingen as bedragopmerkingen '
+      'from beurs as b'
+      'inner join kassa as k on b.beurs_id=k.beursid'
+      'inner join kassaopensluit as kos on k.kassa_id=kos.kassaid'
+      'inner join kassastatus as ks on kos.kassastatusid=ks.kassastatus_id'
+      'inner join kassabedrag as kb on kos.kassabedragid=kb.kassabedrag_id'
+      'where b.isactief=1 and k.isactief=1'
+      'order by kos.datumtijd desc'
+      ''
+    )
+    Params = <>
+    left = 288
+    top = 16
+  end
+  object dsKassabedrag: TDatasource
+    DataSet = vwKassabedrag
+    left = 288
+    top = 64
+  end
+  object connWobbelDdb: TZConnection
+    UTF8StringsAsWideField = False
+    PreprepareSQL = False
+    Properties.Strings = (
+      'PreprepareSQL='
+    )
+    AutoCommit = False
+    ReadOnly = True
+    Port = 0
+    Protocol = 'sqlite-3'
+    LibraryLocation = 'lib\sqlite3.dll'
+    left = 450
+    top = 288
+  end
+  object vwOverzicht: TZQuery
+    Connection = connWobbelMdb
+    Params = <>
+    left = 696
+    top = 16
+  end
+  object dsOverzicht: TDatasource
+    AutoEdit = False
+    DataSet = vwOverzicht
+    left = 696
+    top = 64
+  end
+  object dlgExporteerSQLNaarXls: TSaveDialog
+    Title = 'Tabel opslaan als'
+    DefaultExt = '.xls'
+    Filter = '*.xls file (MS Excel 97)|*.xls|*.xlsx file (MS Excel 2000)|*.xlsx|*.ods file (Open Document; te openen in Excel 2000 +)|*.ods|*.csv file (te importeren in Excel)|*.csv'
+    left = 648
+    top = 272
+  end
+end

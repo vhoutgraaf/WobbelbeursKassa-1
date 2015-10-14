@@ -1,0 +1,24 @@
+object frmAccounts: TfrmAccounts
+  Left = 616
+  Height = 550
+  Top = 254
+  Width = 737
+  Caption = 'Wobbelbeurs Kassa - Login accounts'
+  ClientHeight = 550
+  ClientWidth = 737
+  FormStyle = fsStayOnTop
+  OnActivate = FormActivate
+  OnCloseQuery = FormCloseQuery
+  OnCreate = FormCreate
+  OnDeactivate = FormDeactivate
+  OnDestroy = FormDestroy
+  LCLVersion = '1.0.2.0'
+  object pnlAccounts: TPanel
+    Left = 0
+    Height = 550
+    Top = 0
+    Width = 737
+    Align = alClient
+    TabOrder = 0
+  end
+end

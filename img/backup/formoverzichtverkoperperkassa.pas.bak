@@ -1,0 +1,288 @@
+unit formoverzichtverkoperperkassa;
+
+{$mode objfpc}{$H+}
+
+interface
+
+uses
+Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
+StdCtrls, DBGrids, DbCtrls, Buttons, ComCtrls;
+
+const
+c_Asc = ' Asc ';
+c_Desc = ' Desc ';
+
+
+type
+
+  { TfrmOverzichtVerkoperPerKassa }
+
+  TfrmOverzichtVerkoperPerKassa = class(TForm)
+    btnExporteerOverzichtVerkoperPerKassa: TButton;
+    btnInfo01: TBitBtn;
+    btnToon: TButton;
+    grdOverzicht: TDBGrid;
+    lblPgBar: TLabel;
+    lblVerkoperPerKassaOverzichttitel: TLabel;
+    mmoExportQuery: TMemo;
+    navOverzicht: TDBNavigator;
+    pgBar: TProgressBar;
+    pnlOverzichtVerkoperPerKassa: TPanel;
+    procedure btnExporteerOverzichtVerkoperPerKassaClick(Sender: TObject);
+    procedure btnToonClick(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
+    procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
+    procedure FormCreate(Sender: TObject);
+    procedure FormDeactivate(Sender: TObject);
+    procedure grdOverzichtTitleClick(Column: TColumn);
+  private
+    { private declarations }
+
+    FSql:string;
+
+    FSqlBase:string;
+
+    FOrderByKassanr:string;
+    FOrderByKassanrDescAsc:string;
+
+    FOrderByVerkoperopbrengst:string;
+    FOrderByVerkoperopbrengstDescAsc:string;
+
+    FOrderByVerkopercode:string;
+    FOrderByVerkopercodeDescAsc:string;
+
+    FOrderByBetaalwijze:string;
+    FOrderByBetaalwijzeDescAsc:string;
+
+    FOrderByKassaOpmerkingen:string;
+    FOrderByKassaOpmerkingenDescAsc:string;
+
+  public
+    { public declarations }
+  end;
+
+var
+  frmOverzichtVerkoperPerKassa: TfrmOverzichtVerkoperPerKassa;
+
+implementation
+
+{$R *.lfm}
+
+uses
+  m_tools, c_appsettings, m_constant, m_wobbeldata,
+  m_error, crt;
+
+{ TfrmOverzichtVerkoperPerKassa }
+
+procedure TfrmOverzichtVerkoperPerKassa.btnExporteerOverzichtVerkoperPerKassaClick
+  (Sender: TObject);
+begin
+  dmWobbel.vwOverzicht.Active:=false;
+  grdOverzicht.Clear;
+  pgBar.Visible:=true;
+  lblPgBar.Visible:=true;
+
+  mmoExportQuery.Text:=FSql;
+  pgBar.Position:=0;
+  m_tools.ExporteerQuery(pgBar, lblPgBar, FSQL, 'Opbrengst per inbrenger per kassa');
+end;
+
+procedure TfrmOverzichtVerkoperPerKassa.btnToonClick(Sender: TObject);
+begin
+  pgBar.Visible:=false;
+  lblPgBar.Visible:=false;
+
+  dmWobbel.vwOverzicht.Active:=true;
+end;
+
+procedure TfrmOverzichtVerkoperPerKassa.FormActivate(Sender: TObject);
+var
+  fsize:integer;
+begin
+  m_tools.CloseOtherScreens(self);
+
+  self.Color:=AppSettings.GlobalBackgroundColor;
+  fsize:=m_tools.GetIntegerFromIniFile('FONTS','GlobalFontsize',c_defaultFontsize);
+  self.Font.Size:=fsize;
+
+  dmWobbel.vwOverzicht.Active:=false;
+  dmWobbel.vwOverzicht.SQL.Clear;
+  dmWobbel.vwOverzicht.SQL.Append(FSqlBase);
+  dmWobbel.vwOverzicht.SQL.Append(FOrderByKassanr);
+  dmWobbel.vwOverzicht.SQL.Append(FOrderByKassanrDescAsc);
+
+  FSql:=string(dmWobbel.vwOverzicht.SQL.GetText);
+  mmoExportQuery.Text:=FSql;
+
+  //dmWobbel.vwOverzicht.Active:=true;
+
+  pgBar.Position:=0;
+  lblPgBar.Caption:='';
+  pgBar.Visible:=false;
+  lblPgBar.Visible:=false;
+end;
+
+
+procedure TfrmOverzichtVerkoperPerKassa.FormCloseQuery(Sender: TObject;
+  var CanClose: boolean);
+begin
+//
+end;
+
+procedure TfrmOverzichtVerkoperPerKassa.FormCreate(Sender: TObject);
+begin
+   FSqlBase:=' select ' +
+        ' b.datum as Beursdatum,  ' +
+        ' k.kassanr, ' +
+        ' v.verkopercode as inbrengercode, ' +
+        ' round(case when va.verkoperopbrengst is null or va.verkoperopbrengst = '''' then 0 else va.verkoperopbrengst end,2) as ''Opbrengst (100%)'',  ' +
+        ' round(case when va.verkoperopbrengst is null or va.verkoperopbrengst = '''' then 0 else va.verkoperopbrengst0.75 * va.verkoperopbrengst end,2) as ''Opbrengst (75%)'',  ' +
+        ' round(case when va.verkoperopbrengst is null or va.verkoperopbrengst = '''' then 0 else 0.25 * va.verkoperopbrengst end,2) as ''Opbrengst (25%)'', ' +
+        ' n.aanhef as Aanhef, n.voorletters as Voorletters,n.tussenvoegsel as Tussenvoegsel,n.achternaam as Achternaam, ' +
+        ' b.opmerkingen as Beursopmerkingen, k.opmerkingen as Kassaopmerkingen, '  +
+        ' v.opmerkingen as Verkoperopmerkingen, ' +
+        ' n.straat,n.huisnr,n.huisnrtoevoeging,n.postcode,n.woonplaats, ' +
+        ' n.telefoonmobiel1,n.telefoonmobiel2,n.telefoonvast, n.email, ' +
+        ' case when v.saldobetalingcontant = 1 then ''Ja'' else case when v.saldobetalingcontant is null then '''' else ''Nee'' end end as UitbetalingContant, ' +
+        ' v.rekeningnummer, v.rekeningopnaam, v.rekeningbanknaam, v.rekeningplaats ' +
+        ' from beurs as b ' +
+        ' inner join kassa as k on k.beursid=b.beurs_id ' +
+        ' left join ( ' +
+        '       select ' +
+        '       k.kassa_id, v.verkoper_id, sum(ta.kortingsfactor*a.prijs) as verkoperopbrengst ' +
+        '       from verkoper as v ' +
+        '       left join artikel as a on v.verkoper_id=a.verkoperid ' +
+        '       left join transactieartikel as ta on a.artikel_id=ta.artikelid ' +
+        '       left join transactie as t on ta.transactieid=t.transactie_id ' +
+        '       left join kassa as k on t.kassaid=k.kassa_id ' +
+        '       left join beurs as b on k.beursid=b.beurs_id ' +
+        '       where b.isactief=1 and b.beurs_id is not null ' +
+        '       group by k.kassa_id, v.verkoper_id ' +
+        ' ) as va on va.kassa_id = k.kassa_id ' +
+        ' left join verkoper as v on v.verkoper_id=va.verkoper_id ' +
+        ' left join naw as n on n.naw_id=v.nawid ' +
+        ' where b.isactief=1 ';
+
+
+   FOrderByKassanr:=' order by k.kassanr ';
+   FOrderByVerkopercode:=' order by v.verkopercode ';
+   FOrderByVerkoperopbrengst:=' order by va.verkoperopbrengst ';
+   FOrderByKassaOpmerkingen:=' order by kassaopmerkingen ';
+   FOrderByBetaalwijze:=' order by betaalwijze ';
+
+
+
+   FOrderByKassanrDescAsc:=c_Asc;
+   FOrderByVerkopercodeDescAsc:=c_Asc;
+   FOrderByVerkoperopbrengstDescAsc:=c_Asc;
+   FOrderByKassaOpmerkingenDescAsc:=c_Asc;
+   FOrderByBetaalwijzeDescAsc:=c_Asc;
+
+   btnInfo01.Hint:='Een overzicht van alle Inbrengers en hun opbrengsten in de geselecteerde beurs, per kassa. '+c_CR+
+                   'Met "Exporteer" wordt een export gemaakt. '+c_CR+
+                   'Er kan een export naar Excel 97 (*.xls), Excel 2000 (*.xlsx), Open Document formaat (*.ods) en Comma Seperated Value (*.csv) worden gemaakt.'+c_CR+
+                   '  N.B ODS-documenten zijn te lezen door Excel 2000 en hoger; CSV documenten door alle Excel versies. ' + c_CR +
+                   '  Bij openen van een .csv bestand in Excel is het aan te bevelen om eerst een ''Opslaan als'' te doen, naar een echt Excel formaat.' + c_CR +
+                   '  Bij (zeer) grote bestanden werken .xls, .xlsx en .ods niet meer, dan moet de tussenstap via csv worden gedaan.'+c_CR+
+                   '  Export naar csv gaat het snelst.'+c_CR+
+                   '  Export naar ods duurt het langst.'+c_CR+
+                   '  Aan te raden is om indien mogelijk xlsx bestanden te maken.';
+   mmoExportQuery.Visible:=false;
+end;
+
+procedure TfrmOverzichtVerkoperPerKassa.FormDeactivate(Sender: TObject);
+begin
+  pgBar.Position:=0;
+  lblPgBar.Caption:='';
+
+  dmWobbel.vwOverzicht.Active:=false;
+  grdOverzicht.Clear;
+
+  // om te voorkomen dat de knoppen van het onderliggende scherm doorschijnen
+  Delay(m_constant.c_DeactiveDelay_msec);
+  Application.ProcessMessages;
+end;
+
+procedure TfrmOverzichtVerkoperPerKassa.grdOverzichtTitleClick
+  (Column: TColumn);
+var
+  sColname:string;
+begin
+  sColname:=AnsiLowercase(Column.FieldName);
+  dmWobbel.vwOverzicht.Active:=false;
+  dmWobbel.vwOverzicht.SQL.Clear;
+  dmWobbel.vwOverzicht.SQL.Append(FSqlBase);
+  if (sColname = 'inbrengercode') then
+  begin
+    dmWobbel.vwOverzicht.SQL.Append(FOrderByVerkopercode);
+    dmWobbel.vwOverzicht.SQL.Append(FOrderByVerkopercodeDescAsc);
+    if (FOrderByVerkopercodeDescAsc = c_Asc) then
+    begin
+      FOrderByVerkopercodeDescAsc:=c_Desc;
+    end
+    else
+    begin
+      FOrderByVerkopercodeDescAsc:=c_Asc;
+    end;
+  end
+  else if ((sColname = 'opbrengst (100%)') or (sColname = 'opbrengst (75%)') or (sColname = 'opbrengst (25%)')) then
+  begin
+    dmWobbel.vwOverzicht.SQL.Append(FOrderByVerkoperopbrengst);
+    dmWobbel.vwOverzicht.SQL.Append(FOrderByVerkoperopbrengstDescAsc);
+    if (FOrderByVerkoperopbrengstDescAsc = c_Asc) then
+    begin
+      FOrderByVerkoperopbrengstDescAsc:=c_Desc;
+    end
+    else
+    begin
+      FOrderByVerkoperopbrengstDescAsc:=c_Asc;
+    end;
+  end
+  else if (sColname = 'kassanr') then
+  begin
+    dmWobbel.vwOverzicht.SQL.Append(FOrderByKassanr);
+    dmWobbel.vwOverzicht.SQL.Append(FOrderByKassanrDescAsc);
+    if (FOrderByKassanrDescAsc = c_Asc) then
+    begin
+      FOrderByKassanrDescAsc:=c_Desc;
+    end
+    else
+    begin
+      FOrderByKassanrDescAsc:=c_Asc;
+    end;
+  end
+  else if (sColname = 'kassaopmerkingen') then
+  begin
+    dmWobbel.vwOverzicht.SQL.Append(FOrderByKassaOpmerkingen);
+    dmWobbel.vwOverzicht.SQL.Append(FOrderByKassaOpmerkingenDescAsc);
+    if (FOrderByKassaOpmerkingenDescAsc = c_Asc) then
+    begin
+      FOrderByKassaOpmerkingenDescAsc:=c_Desc;
+    end
+    else
+    begin
+      FOrderByKassaOpmerkingenDescAsc:=c_Asc;
+    end;
+  end
+  else if (sColname = 'betaalwijze') then
+  begin
+    dmWobbel.vwOverzicht.SQL.Append(FOrderByBetaalwijze);
+    dmWobbel.vwOverzicht.SQL.Append(FOrderByBetaalwijzeDescAsc);
+    if (FOrderByBetaalwijzeDescAsc = c_Asc) then
+    begin
+      FOrderByBetaalwijzeDescAsc:=c_Desc;
+    end
+    else
+    begin
+      FOrderByBetaalwijzeDescAsc:=c_Asc;
+    end;
+  end;
+
+  FSql:=string(dmWobbel.vwOverzicht.SQL.GetText);
+  mmoExportQuery.Text:=FSql;
+
+  dmWobbel.vwOverzicht.Active:=true;
+end;
+
+end.
+

@@ -1,0 +1,85 @@
+object frmArtikeltype: TfrmArtikeltype
+  Left = 435
+  Height = 400
+  Hint = 'TODO: nog in te vullen'
+  Top = 194
+  Width = 684
+  Caption = 'Wobbelbeurs Kassa - Artikeltypes'
+  ClientHeight = 400
+  ClientWidth = 684
+  FormStyle = fsStayOnTop
+  OnActivate = FormActivate
+  OnClose = FormClose
+  OnCloseQuery = FormCloseQuery
+  OnCreate = FormCreate
+  OnDeactivate = FormDeactivate
+  OnDestroy = FormDestroy
+  ShowHint = True
+  LCLVersion = '1.0.2.0'
+  object pnlArtikeltype: TPanel
+    Left = 0
+    Height = 400
+    Top = 0
+    Width = 684
+    Align = alClient
+    BorderWidth = 2
+    BorderStyle = bsSingle
+    Caption = 'pnlArtikeltype'
+    ClientHeight = 396
+    ClientWidth = 680
+    TabOrder = 0
+    object lblArtikeltypeTitel: TLabel
+      Left = 10
+      Height = 14
+      Top = 9
+      Width = 100
+      Caption = 'Lijst met artikeltypes'
+      ParentColor = False
+    end
+    object grdArtikeltype: TDBGrid
+      Left = 14
+      Height = 326
+      Top = 28
+      Width = 661
+      Anchors = [akTop, akLeft, akRight, akBottom]
+      Color = clWindow
+      Columns = <      
+        item
+          Title.Caption = 'artikeltype_id'
+          Width = 163
+          FieldName = 'artikeltype_id'
+        end      
+        item
+          Title.Caption = 'omschrijving'
+          Width = 163
+          FieldName = 'omschrijving'
+        end      
+        item
+          Title.Caption = 'opmerking'
+          Width = 164
+          FieldName = 'opmerking'
+        end>
+      DataSource = dmWobbel.dsArtikeltype
+      TabOrder = 0
+    end
+    object navArtikeltypeGrid: TDBNavigator
+      Left = 14
+      Height = 25
+      Top = 355
+      Width = 241
+      Anchors = [akLeft, akBottom]
+      BevelOuter = bvNone
+      ChildSizing.EnlargeHorizontal = crsScaleChilds
+      ChildSizing.EnlargeVertical = crsScaleChilds
+      ChildSizing.ShrinkHorizontal = crsScaleChilds
+      ChildSizing.ShrinkVertical = crsScaleChilds
+      ChildSizing.Layout = cclLeftToRightThenTopToBottom
+      ChildSizing.ControlsPerLine = 100
+      ClientHeight = 25
+      ClientWidth = 241
+      DataSource = dmWobbel.dsArtikeltype
+      Options = []
+      TabOrder = 1
+    end
+  end
+end

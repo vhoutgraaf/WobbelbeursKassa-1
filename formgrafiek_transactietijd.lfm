@@ -1,0 +1,76 @@
+object frmTransactiesTegenTijd: TfrmTransactiesTegenTijd
+  Left = 578
+  Height = 449
+  Top = 328
+  Width = 689
+  Caption = 'frmTransactiesTegenTijd'
+  ClientHeight = 449
+  ClientWidth = 689
+  OnActivate = FormActivate
+  OnDeactivate = FormDeactivate
+  LCLVersion = '1.0.2.0'
+  object chrtTransactieTijd: TChart
+    Left = 0
+    Height = 400
+    Top = 32
+    Width = 676
+    AxisList = <    
+      item
+        Minors = <>
+        Title.LabelFont.Orientation = 900
+      end    
+      item
+        Alignment = calBottom
+        Marks.Visible = False
+        Marks.OverlapPolicy = opHideNeighbour
+        Minors = <>
+        Transformations = ChartAxisTransformations1
+        OnMarkToText = chrtTransactieTijdAxisList1MarkToText
+      end>
+    Foot.Brush.Color = clBtnFace
+    Foot.Font.Color = clBlue
+    Title.Brush.Color = clBtnFace
+    Title.Font.Color = clBlue
+    Title.Text.Strings = (
+      'TAChart'
+    )
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    ParentColor = False
+    object chrtTransactieTijdBarSeries: TBarSeries
+      BarBrush.Color = clRed
+      Source = DbChartSourceTransactieTijd
+    end
+  end
+  object DbChartSourceTransactieTijd: TDbChartSource
+    DataSource = dsTransactieTijd
+    FieldX = 'tijd'
+    FieldY = 'aantal'
+    left = 521
+    top = 46
+  end
+  object dsTransactieTijd: TDatasource
+    AutoEdit = False
+    DataSet = vwTransactieTijd
+    left = 340
+    top = 48
+  end
+  object vwTransactieTijd: TZQuery
+    Connection = dmWobbel.connWobbelMdb
+    ReadOnly = True
+    SQL.Strings = (
+      'select '
+      'julianday(datumtijdinvoer) as tijd, count(*) as aantal from transactie '
+      'group by strftime(''%Y'',datumtijdinvoer) || ''-'' || strftime(''%m'',datumtijdinvoer) || ''-'' || strftime(''%d'',datumtijdinvoer) || '' '' || strftime(''%H'',datumtijdinvoer) || '':'' || strftime(''%M'',datumtijdinvoer)'
+      'order by datumtijdinvoer asc;'
+    )
+    Params = <>
+    left = 200
+    top = 48
+  end
+  object ChartAxisTransformations1: TChartAxisTransformations
+    left = 197
+    top = 208
+    object ChartAxisTransformations1AutoScaleAxisTransform1: TAutoScaleAxisTransform
+    end
+  end
+end

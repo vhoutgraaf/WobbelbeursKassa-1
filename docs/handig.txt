@@ -1,0 +1,119 @@
+werken met subversion:
+
+op de nlam1lt0302 is een subversion server geinstalleerd.
+
+
+In de VM een subversion client: Slik-Subversion-1.8.3-win32.msi
+
+Tortoise lukte alleen met een antieke versie die XPSP2 ondersteunt: 1.6.5. 
+Beter om slik te gebruiken: een commandline tool.
+
+Een checkout:
+D:
+cd projecten\wobbel
+svn checkout http://nlam1lt0302/svn/wobbelbeurs/trunk/wobbelbeurs
+
+bestand toevoegen:
+cd wobbelbeurs
+svn add handig.txt
+
+comitten:
+
+svn commit -m "committekst"
+
+
+
+Maak een kopie van de hele checkout directory
+
+
+--------------
+git: een portabele versie staat in:
+
+	C:\Programs\PortableGit
+Dit pad is toegevoegd aan PATH
+
+Gebruik command-line: git-cmd.bat
+
+dus:
+	d:
+	cd projecten\wobbel
+
+
+Initialiseer GIT:
+	git config --global user.email vincent.houtgraaf@rigd-loxia.nl
+	git config --global user.name "Vincent Houtgraaf"
+
+check:
+	git config --list
+
+
+aanmaken repository:
+
+	D:
+	cd projecten\wobbel\wobbelbeurs
+	git init
+	git add .
+	git commit -a -m "eerste commit" 
+
+maak een kloon:
+	subst X: /D
+	subst X: "\\vmware-host\Shared Folders\projecten_wobbel\beurs\wobbelbeurs_git"
+	X:
+	mkdir wobbelbeurs_git
+	cd wobbelbeurs_git
+	git clone D:\projecten\wobbel\wobbelbeurs
+
+
+Nu hebben we een kloon van de repo op D: in X:
+
+
+Als bestanden zijn gewijzigd op D:
+
+	git add
+en / of
+	git commit -a -m "blaaaaa nog een commit"
+
+op de kloon:
+check welke aliassen (van de overgenomen repo's) beschikbaar zijn:
+
+	git remote
+of
+	git remote -v
+
+Hiermee zie je [aliasnaam]
+
+Toevoegen tracked repository:
+Bijvoorbeeld toevoegen aan de repos op de USB stick van de repo op de LOXIA machine:
+	git remote add wobbelbeurs_VM_vast D:\projecten\wobbel\wobbelbeurs
+
+Check:
+	git remote
+	
+Overnemen van wijzigingen van de remote repo:
+	git fetch [aliasnaam]
+	git merge [aliasnaam]/master
+of, als je lokaal toch geen wijzigingen hebt, dan kan je direct foen:
+	git pull
+
+gui:
+	gitk
+
+
+
+
+------------------
+Kopieer de .svn directory uit de kopie van de checkout naar
+	projecten\wobbel\wobbelbeurs.
+	
+Check de status:
+	svn status
+	git status
+	
+Nu kunnen we zowel git als subversion gebruiken.
+
+N.B. git wil een tekst hebben in de -m vlag van commit
+subversion vind een lege string bij -n genoeg.
+
+
+
+

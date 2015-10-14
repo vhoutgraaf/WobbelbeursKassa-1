@@ -1,0 +1,93 @@
+
+ref:
+http://delphi.about.com/od/formsdialogs/a/delphiformlife.htm
+http://delphi.about.com/od/adptips2005/qt/nilselfapp.htm
+
+
+
+Download Lazarus:
+http://sourceforge.net/projects/lazarus/files/Lazarus%20Windows%2032%20bits/Lazarus%200.9.30/lazarus-0.9.30-fpc-2.4.2-win32.exe/download
+Installeer deze in
+	D:\lazarus\
+Na installatie, voor openen IDE: uitbreiden PATH met D:\lazarus\fpc;
+	
+	
+Installeer ook de documentatie:
+fpc-lazarus-doc-chm-0.9.30.tar.bz2
+Uitpakken en verplaatsen naar 
+	D:\lazarus\docs\chm\
+Daarna in: 
+	Environment -> Options -> Help Options
+het pad invullen voor de chm helpbestanden.
+
+
+
+Download Zeos lib om SQLite met Lazarus te kunnen gebruiken:
+http://sourceforge.net/projects/zeoslib/
+Uitpakken en kopieren naar
+	D:\lazarus\externetools\zeoslib\
+Installeren: Open de Lazarus IDE, via 'Open package file (.lpk)'
+Browse naar D:\lazarus\externetools\zeoslib\packages\lazarus\
+Open zcomponent.lpk. Compile en Install deze: die neem de andere packages mee.
+
+
+
+Download SQLite:
+http://www.sqlite.org/download.html
+bestanden:
+	sqlite-dll-win32-x86-3070701.zip
+	sqlite-shell-win32-x86-3070701.zip
+Uitpakken en kopieren naar
+	D:\lazarus\externetools\sqlite\
+Uitbreiden PATH met ;D:\lazarus\externetools\sqlite;
+
+
+http://wiki.lazarus.freepascal.org/MultiDoc
+Checkout MultiDoc om forms-in-forms te gebruiken: FreePascal kent geen MDI forms omdat dat Microsoft-only is.
+
+
+Export naar Excel kan via package fpspreadsheet: zie
+http://wiki.freepascal.org/FPSpreadsheet#laz_fpspreadsheet.lpk
+te krijgen via een subversion checkout
+svn co https://lazarus-ccr.svn.sourceforge.net/svnroot/lazarus-ccr/components/fpspreadsheet fpspreadsheet
+installeer:
+laz_fpspreadsheet.lpk
+Voeg toe aan het project
+
+
+
+
+Maak de database: 
+    D:\lazarus\externetools\sqlite\sqlite3.exe D:\projecten\wobbel\beurs_lazarus\wobbelbeurs.sp3
+of    
+    "D:\programs\sqlite\sqlite3.exe" "D:\projecten\wobbel\wobbelbeurs\database\Copy of maart2013 beheer 3.sp3"
+    SQLite version 3.7.3
+    Enter ".help" for instructions
+    Enter SQL statements terminated with a ";"
+    sqlite>
+
+Execute dit bestand: copy & paste in de sqlite3 command shell.
+Of: 
+    sqlite> .read D:/projecten/wobbel/beurs_lazarus/createdb-minimaal.sql
+	
+
+
+
+---------------
+Als er bij uitvoeren van het programma een melding komt: SQL Error: library routine called out of sequence.
+is de designconnection van de ZEOS TZConnection false gezet. Zet deze op true en het werkt.
+http://www.lazarus.freepascal.org/index.php?topic=12072.0
+
+--- 
+
+Nieuwere versies van de software, okt 2012
+
+Download lazarus. Veel nieuwe componenten zijn nu standaard. Bijvoorbeeld LeakView
+
+ZeosLib versie 6.6.6 is als installer te downloaden maar compileert niet.
+Oplossing, zie http://wiki.freepascal.org/Zeos_tutorial#Windows
+
+Checkout de trunk van subversion:
+http://svn.code.sf.net/p/zeoslib/code-0/trunk
+
+
